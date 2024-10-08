@@ -4,13 +4,13 @@ Activation tokens are a tool used to ensure that a boolean value isn't 'fought o
 
 ## How to use
 
-### Create a new activation token source.
+#### Create a new activation token source.
   
 ```lua
 local myTokenSource = ActivationTokenSource.new()
 ```
 
-### Requesting an ActivationToken will 'activate' the ActivationTokenSource.
+#### Requesting an ActivationToken will 'activate' the ActivationTokenSource.
   
 ```lua
   print(myTokenSource:IsActive()) --prints 'false'
@@ -20,7 +20,7 @@ local myTokenSource = ActivationTokenSource.new()
   print(myTokenSource:IsActive()) --prints 'true'
 ```
 
-### Tokens can be cancelled to notify the ActivationTokenSource.
+#### Tokens can be cancelled to notify the ActivationTokenSource.
 
 ```lua
   local token = myTokenSource:RequestToken()
@@ -34,7 +34,7 @@ local myTokenSource = ActivationTokenSource.new()
 
 ```
 
-### An ActivationTokenSource will remain active as long as there is at least one valid ActivationToken belonging to it.
+#### An ActivationTokenSource will remain active as long as there is at least one valid ActivationToken belonging to it.
 
 ```lua
   local tokenA = myTokenSource:RequestToken()
@@ -52,7 +52,7 @@ local myTokenSource = ActivationTokenSource.new()
 
 ```
 
-### You can assign callbacks to the ActivationTokenSource to be notified when it is enabled/disabled
+#### You can assign callbacks to the ActivationTokenSource to be notified when it is enabled/disabled
 
 ```lua
   local DoSomethingCool = function() end
