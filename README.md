@@ -57,14 +57,16 @@ local myTokenSource = ActivationTokenSource.new()
 ```lua
   local DoSomethingCool = function() end
 
-  local DoSomethingDifferent = function() end
+  local aTable = {}
 
-  local DoSomethingElse = function(state) end
+  local aTable:DoSomethingDifferent = function(self) end
 
-  myTokenSource.OnActivation(DoSomethingCool) --reacts when the token source is enabled
+  local DoSomethingElse = function(state) end 
 
-  myTokenSource.OnDeactivation(DoSomethingDifferent) --reacts when the token source is disabled
+  myTokenSource.OnActivation(nil, DoSomethingCool) --reacts when the token source is enabled, setting the first parameter blank assumes that this is a . call
 
-  myTokenSource.OnChange(DoSomethingElse) --reacts when the token source is enabled OR disabled, providing a function with a bool parameter will allow you to easily check the state of the ActivationTokenSource
+  myTokenSource.OnDeactivation(aTable, DoSomethingDifferent) --reacts when the token source is disabled, note that you can pass the 'self' parameter in first to perform a : call
+
+  myTokenSource.OnChange(nil, DoSomethingElse) --reacts when the token source is enabled OR disabled, providing a function with a bool parameter will allow you to easily check the state of the ActivationTokenSource
   
 ```
